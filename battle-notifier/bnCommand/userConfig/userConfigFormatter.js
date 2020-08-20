@@ -16,8 +16,8 @@ const userConfigFormatter = ({ keyword }) => {
   const configListToString = (list, isIgnore = false) => {
     const stringValues = list.map((item) => {
       const ignore = isIgnore ? `${capitalize(keyword.ignore)} ` : '';
-      const battleTypes =
-        listItemToString(item.battleTypes) || capitalize(keyword.any);
+      const anyBattleType = isIgnore ? keyword.any : capitalize(keyword.any);
+      const battleTypes = listItemToString(item.battleTypes) || anyBattleType;
       const designers = listItemToString(item.designers) || keyword.any;
 
       return `${ignore}${battleTypes}${keyword.separator}${designers}`;
@@ -32,7 +32,7 @@ const userConfigFormatter = ({ keyword }) => {
     if (!isEmpty) {
       const notify = configListToString(userConfig.notifyList);
       const ignore = configListToString(userConfig.ignoreList, true);
-      result = `${notify}${notify ? '\n' : ''}${ignore}`;
+      result = `${notify}${notify && ignore ? '\n' : ''}${ignore}`;
     } else {
       result =
         'No notifications set, please use `!bn` to set your configuration';

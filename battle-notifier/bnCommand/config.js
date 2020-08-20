@@ -1,12 +1,16 @@
 module.exports = {
-  emoji: {
+  emojis: {
     ok: '✅',
     error: '❌',
     notFound: '❓',
   },
-  keyword: {
+  keywords: {
     any: 'any',
     ignore: 'ignore',
     separator: ' by ',
+  },
+  responses: {
+    configNotFound:
+      'You have no configuration set yet, please write `!bn` to do it',
   },
 };

@@ -1,7 +1,8 @@
 const matchesValue = (array, value) => {
+  const matchValue = value && value.toLowerCase();
   return (
     array.length === 0 ||
-    array.some((item) => item.toLowerCase() === value.toLowerCase())
+    array.some((item) => item.toLowerCase() === matchValue)
   );
 };
 

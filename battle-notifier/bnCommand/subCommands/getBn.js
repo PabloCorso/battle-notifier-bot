@@ -1,6 +1,6 @@
-const { keyword } = require('../config');
+const { keywords, responses } = require('../config');
 const userConfigFormatter = require('../userConfig').formatter({
-  keyword,
+  keyword: keywords,
 });
 
 const statusToString = (isOn) => (isOn ? 'ON' : 'OFF');
@@ -17,7 +17,7 @@ const getBn = async ({ user, store }) => {
     const configString = userConfigFormatter.toString(userConfig);
     response = `${user} your current config is **${status}**\n(*${toggleStatus}*)\n\n${configString}`;
   } catch {
-    response = 'No configuration found, please write `!bn` to set it';
+    response = responses.configNotFound;
   }
 
   user.send(response);

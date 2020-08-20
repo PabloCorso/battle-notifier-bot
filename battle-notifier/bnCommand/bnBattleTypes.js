@@ -9,7 +9,7 @@ const bnBattleTypes = [
   { name: 'Speed', aliases: ['sp'] },
   { name: 'Last Counts', aliases: ['lc, lastcount'] },
   { name: 'Finish Count', aliases: ['fc'] },
-  { name: '1 Hour TT', aliases: ['1htt', '1h', 'tt', 'ht', 'onehourtt'] },
+  { name: '1 Hour TT', aliases: ['1h', 'tt', 'ht', 'onehourtt'] },
 ];
 
 module.exports = bnBattleTypes;
