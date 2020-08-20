@@ -6,7 +6,7 @@ const aliasBn = (user) => {
     .map((bnType) => getBattleTypeVariations(bnType).join(', '))
     .join('\n');
   user.send(
-    `This are all the possible alias for battle types:\n*(can separate battle types and kuski names by comma or spaces)*\n\`\`\`${typeAliases}\`\`\``,
+    `This are all the possible aliases for battle types:\n*(can separate battle types and designer names by comma or spaces)*\n\`\`\`${typeAliases}\`\`\``,
   );
 };
 
