@@ -1,4 +1,4 @@
-const { prefix, token } = require('./config.json');
+const { prefix, token, bnStorePath } = require('./config');
 const {
   bnCommand,
   battleCommand,
@@ -7,7 +7,7 @@ const {
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const store = createBnStore('./bn.store.json');
+const store = createBnStore(bnStorePath);
 
 client.once('ready', () => {
   console.log('Ready!');

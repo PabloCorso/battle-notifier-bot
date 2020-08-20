@@ -1,3 +1,6 @@
+# Battle Notifier
+*.store.json
+
 # Logs
 logs
 *.log
