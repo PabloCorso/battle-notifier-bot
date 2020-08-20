@@ -18,7 +18,6 @@ const readUserMessage = async ({ channel, user }) => {
     });
     return messages.first();
   } catch (error) {
-    console.log(error);
     throw new TimeOutError('⏳ Time ran out, please try again.');
   }
 };

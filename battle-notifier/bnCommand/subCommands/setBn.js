@@ -55,7 +55,6 @@ const setBn = async ({ message, store }) => {
       userMessage.react(emoji.error);
     }
   } catch (error) {
-    console.log(error);
     const errorMessage =
       error instanceof TimeOutError ? error.message : unknownErrorMessage;
     user.send(errorMessage);
