@@ -12,7 +12,7 @@ const userConfigFormatter = formatter({ keyword: keywords });
 
 const notesMessage = `*Note:*
 *Use the word* ***any*** *to indicate "Any battle types" or "Any designers".*
-*Use the word* ***ignore*** *at the beinning of a line to ignore that specific configuration.*`;
+*Use the word* ***ignore*** *at the beinning of a line to ignore (blacklist) that specific rule.*`;
 
 const firstConfigMessage = `Please reply to this message to set your configuration. Write one line per "rule" like this:
 
