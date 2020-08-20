@@ -1,7 +1,9 @@
 const { prefix, token } = require('./config.json');
-const bnCommand = require('./commands/bn');
-const battleCommand = require('./commands/battle');
-const createBnStore = require('./bnStore');
+const {
+  bnCommand,
+  battleCommand,
+  createBnStore,
+} = require('./battle-notifier');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -18,7 +20,7 @@ client.once('ready', () => {
 
 client.login(token);
 
-const handleUserRequest = (message) => {
+const handleUserRequest = async (message) => {
   const spacesRegexp = / +/;
   const args = message.content.slice(prefix.length).trim().split(spacesRegexp);
   const commandName = args.shift().toLowerCase();
@@ -31,7 +33,7 @@ const handleUserRequest = (message) => {
     command.execute({ message, args, store, client });
   } catch (error) {
     console.error(error);
-    message.reply('there was an error trying to execute that command!');
+    message.reply('There was an error trying to execute that command!');
   }
 };
 

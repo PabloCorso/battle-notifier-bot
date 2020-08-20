@@ -1,4 +1,4 @@
-const battleExample = require('../battleExample');
+const battleExample = require('./battleExample');
 const { getSubscribedUserIds } = require('../notifyBattle');
 
 const battleToString = (battle) => {
@@ -7,10 +7,11 @@ const battleToString = (battle) => {
 
 const notifyBattlestart = async ({ battle, store, client }) => {
   const userIds = await getSubscribedUserIds({ battle, store });
+  const message = `▶ ${battleToString(battle)}`;
   Promise.all(
     userIds.map(async (userId) => {
-      const user = await client.users.fetch(userId);
-      await user.send(battleToString(battle));
+      const user = await client.fetchUser(userId);
+      await user.send(message);
     }),
   );
 };
