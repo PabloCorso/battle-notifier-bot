@@ -12,15 +12,15 @@ const isUserConfigEmpty = userConfig => {
   );
 };
 
-const userConfigFormatter = ({ keyword }) => {
+const userConfigFormatter = ({ keywords }) => {
   const configListToString = (list, isIgnore = false) => {
     const stringValues = list.map(item => {
-      const ignore = isIgnore ? `${capitalize(keyword.ignore)} ` : '';
-      const anyBattleType = isIgnore ? keyword.any : capitalize(keyword.any);
+      const ignore = isIgnore ? `${capitalize(keywords.ignore)} ` : '';
+      const anyBattleType = isIgnore ? keywords.any : capitalize(keywords.any);
       const battleTypes = listItemToString(item.battleTypes) || anyBattleType;
-      const designers = listItemToString(item.designers) || keyword.any;
+      const designers = listItemToString(item.designers) || keywords.any;
 
-      return `${ignore}${battleTypes}${keyword.separator}${designers}`;
+      return `${ignore}${battleTypes}${keywords.separator}${designers}`;
     });
     return stringValues.join('\n');
   };

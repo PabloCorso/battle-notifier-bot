@@ -5,7 +5,7 @@ const { emojis, keywords, responses } = require('../config');
 const bnBattleTypes = require('../bnBattleTypes');
 const userConfigParser = require('../userConfig').parser({
   bnBattleTypes,
-  keyword: keywords,
+  keywords: keywords,
 });
 
 const testBnMessage =

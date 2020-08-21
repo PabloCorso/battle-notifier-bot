@@ -1,17 +1,13 @@
 const { prefix, token, bnStorePath } = require('./config');
-const { bnCommand, battleCommand, createBnStore } = require('./battleNotifier');
+const battleNotifier = require('./battleNotifier');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const store = createBnStore(bnStorePath);
+const bn = battleNotifier({ client, bnStorePath });
 
 client.once('ready', () => {
   console.log('Ready!');
   client.user.setUsername('BattleNotifier');
-
-  client.commands = new Discord.Collection();
-  client.commands.set(bnCommand.name, bnCommand);
-  client.commands.set(battleCommand.name, battleCommand);
 });
 
 client.login(token);
@@ -21,15 +17,13 @@ const handleUserRequest = async message => {
   const args = message.content.slice(prefix.length).trim().split(spacesRegexp);
   const commandName = args.shift().toLowerCase();
 
-  if (!client.commands.has(commandName)) return;
-
-  const command = client.commands.get(commandName);
+  if (commandName !== bn.commandName) return;
 
   try {
-    command.execute({ message, args, store, client });
+    await bn.handleMessage({ message, args });
   } catch (error) {
-    console.error(error);
-    message.reply('There was an error trying to execute that command!');
+    console.log(error);
+    await message.reply('There was an error trying to execute that command!');
   }
 };
 

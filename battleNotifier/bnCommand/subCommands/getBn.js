@@ -1,6 +1,6 @@
 const { keywords, responses } = require('../config');
 const userConfigFormatter = require('../userConfig').formatter({
-  keyword: keywords,
+  keywords,
 });
 
 const statusToString = isOn => (isOn ? 'ON' : 'OFF');

@@ -12,9 +12,9 @@ const getBattleTypeVariations = bnBattleType => {
   return typeNameVariations;
 };
 
-const userConfigParser = ({ bnBattleTypes, keyword }) => {
+const userConfigParser = ({ bnBattleTypes, keywords }) => {
   const parseDesignersInput = input => {
-    const isAny = input.toLowerCase() === keyword.any;
+    const isAny = input.toLowerCase() === keywords.any;
     return isAny ? [] : input.split(spacesRegexp);
   };
 
@@ -32,7 +32,7 @@ const userConfigParser = ({ bnBattleTypes, keyword }) => {
 
   const splitInputLine = inputLine => {
     const input = inputLine.replace(commasRegexp, ' ');
-    const [rawTypesInput, rawDesignersInput] = input.split(keyword.separator);
+    const [rawTypesInput, rawDesignersInput] = input.split(keywords.separator);
 
     const battleTypesInput = rawTypesInput.trim().toLowerCase();
     const designersInput = rawDesignersInput.trim();
@@ -42,9 +42,9 @@ const userConfigParser = ({ bnBattleTypes, keyword }) => {
   const parseInputLine = inputLine => {
     const [battleTypesInput, designersInput] = splitInputLine(inputLine);
 
-    const isIgnore = battleTypesInput.includes(keyword.ignore);
+    const isIgnore = battleTypesInput.includes(keywords.ignore);
     const cleanTypesInput = isIgnore
-      ? battleTypesInput.replace(keyword.ignore, ' ')
+      ? battleTypesInput.replace(keywords.ignore, ' ')
       : battleTypesInput;
 
     const battleTypes = parseBattleTypesInput(cleanTypesInput);
@@ -59,7 +59,7 @@ const userConfigParser = ({ bnBattleTypes, keyword }) => {
 
     const splitLines = userInput.split('\n');
     splitLines.forEach(inputLine => {
-      if (inputLine.includes(keyword.separator)) {
+      if (inputLine.includes(keywords.separator)) {
         const { isIgnore, ...configLine } = parseInputLine(inputLine);
         if (isIgnore) {
           ignoreList.push(configLine);

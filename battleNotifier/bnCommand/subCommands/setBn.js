@@ -7,8 +7,9 @@ const {
   formatter,
   isUserConfigEmpty,
 } = require('../userConfig/index.js');
-const userConfigParser = parser({ bnBattleTypes, keyword: keywords });
-const userConfigFormatter = formatter({ keyword: keywords });
+
+const userConfigParser = parser({ bnBattleTypes, keywords });
+const userConfigFormatter = formatter({ keywords });
 
 const notesMessage = `*Note:*
 *Use the word* ***any*** *to indicate "Any battle types" or "Any designers".*
@@ -41,7 +42,7 @@ const sendRequestMessage = async ({ message, store }) => {
   const redirectMessage = currentConfig
     ? getEditMessage(currentConfig)
     : firstConfigMessage;
-  return await redirectToDMChannel({
+  return redirectToDMChannel({
     message,
     redirectMessage,
   });
