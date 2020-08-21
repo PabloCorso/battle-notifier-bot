@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 
-const readJsonFile = async (path) => {
+const readJsonFile = async path => {
   let result = {};
   try {
     const fileHandle = await fs.readFile(path);
@@ -16,12 +16,12 @@ const writeJsonFile = async (fileName, data) => {
   await fs.writeFile(fileName, JSON.stringify(data));
 };
 
-const createBnStore = (path) => {
+const createBnStore = path => {
   const getAll = async () => {
     return readJsonFile(path);
   };
 
-  const get = async (userId) => {
+  const get = async userId => {
     const bnStore = await getAll();
     return bnStore[userId];
   };

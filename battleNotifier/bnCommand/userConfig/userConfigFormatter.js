@@ -1,12 +1,12 @@
-const capitalize = (string) => {
+const capitalize = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const listItemToString = (item) => {
+const listItemToString = item => {
   return Object.values(item).join(', ');
 };
 
-const isUserConfigEmpty = (userConfig) => {
+const isUserConfigEmpty = userConfig => {
   return (
     userConfig.notifyList.length === 0 && userConfig.ignoreList.length === 0
   );
@@ -14,7 +14,7 @@ const isUserConfigEmpty = (userConfig) => {
 
 const userConfigFormatter = ({ keyword }) => {
   const configListToString = (list, isIgnore = false) => {
-    const stringValues = list.map((item) => {
+    const stringValues = list.map(item => {
       const ignore = isIgnore ? `${capitalize(keyword.ignore)} ` : '';
       const anyBattleType = isIgnore ? keyword.any : capitalize(keyword.any);
       const battleTypes = listItemToString(item.battleTypes) || anyBattleType;
@@ -25,7 +25,7 @@ const userConfigFormatter = ({ keyword }) => {
     return stringValues.join('\n');
   };
 
-  const userConfigToString = (userConfig) => {
+  const userConfigToString = userConfig => {
     let result = '';
 
     const isEmpty = isUserConfigEmpty(userConfig);

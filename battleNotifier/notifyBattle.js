@@ -1,8 +1,7 @@
 const matchesValue = (array, value) => {
   const matchValue = value && value.toLowerCase();
   return (
-    array.length === 0 ||
-    array.some((item) => item.toLowerCase() === matchValue)
+    array.length === 0 || array.some(item => item.toLowerCase() === matchValue)
   );
 };
 
@@ -16,7 +15,7 @@ const battleMatchesConfigItem = (battle, configItem) => {
 };
 
 const battleMatchesConfigList = (battle, configList) =>
-  configList.some((configItem) => battleMatchesConfigItem(battle, configItem));
+  configList.some(configItem => battleMatchesConfigItem(battle, configItem));
 
 const battleMatchesUserConfig = (battle, userConfig) =>
   battleMatchesConfigList(battle, userConfig.notifyList) &&

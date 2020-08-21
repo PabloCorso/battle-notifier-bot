@@ -11,7 +11,7 @@ Commands:
 \`\`\`
 `;
 
-const helpBn = async (user) => {
+const helpBn = async user => {
   await user.send(helpMessage);
 };
 

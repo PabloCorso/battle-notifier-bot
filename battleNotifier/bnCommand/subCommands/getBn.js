@@ -3,7 +3,7 @@ const userConfigFormatter = require('../userConfig').formatter({
   keyword: keywords,
 });
 
-const statusToString = (isOn) => (isOn ? 'ON' : 'OFF');
+const statusToString = isOn => (isOn ? 'ON' : 'OFF');
 
 const getBn = async ({ user, store }) => {
   let response = '';

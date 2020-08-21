@@ -1,7 +1,7 @@
 const spacesRegexp = / +/g;
 const commasRegexp = /,/g;
 
-const getBattleTypeVariations = (bnBattleType) => {
+const getBattleTypeVariations = bnBattleType => {
   const typeName = bnBattleType.name.toLowerCase();
   const typeNameVariations = [typeName, ...bnBattleType.aliases];
   if (typeName.includes(' ')) {
@@ -13,24 +13,24 @@ const getBattleTypeVariations = (bnBattleType) => {
 };
 
 const userConfigParser = ({ bnBattleTypes, keyword }) => {
-  const parseDesignersInput = (input) => {
+  const parseDesignersInput = input => {
     const isAny = input.toLowerCase() === keyword.any;
     return isAny ? [] : input.split(spacesRegexp);
   };
 
-  const parseBattleTypesInput = (input) => {
+  const parseBattleTypesInput = input => {
     const rawStringInput = input ? input.replace(commasRegexp, ' ') : '';
 
     return bnBattleTypes.reduce((acc, type) => {
       const typeNameVariations = getBattleTypeVariations(type);
-      const hasType = typeNameVariations.some((variation) =>
+      const hasType = typeNameVariations.some(variation =>
         rawStringInput.includes(variation),
       );
       return hasType ? [...acc, type.name] : acc;
     }, []);
   };
 
-  const splitInputLine = (inputLine) => {
+  const splitInputLine = inputLine => {
     const input = inputLine.replace(commasRegexp, ' ');
     const [rawTypesInput, rawDesignersInput] = input.split(keyword.separator);
 
@@ -39,7 +39,7 @@ const userConfigParser = ({ bnBattleTypes, keyword }) => {
     return [battleTypesInput, designersInput];
   };
 
-  const parseInputLine = (inputLine) => {
+  const parseInputLine = inputLine => {
     const [battleTypesInput, designersInput] = splitInputLine(inputLine);
 
     const isIgnore = battleTypesInput.includes(keyword.ignore);
@@ -53,12 +53,12 @@ const userConfigParser = ({ bnBattleTypes, keyword }) => {
     return { isIgnore, battleTypes, designers };
   };
 
-  const parseUserConfig = (userInput) => {
+  const parseUserConfig = userInput => {
     const notifyList = [];
     const ignoreList = [];
 
     const splitLines = userInput.split('\n');
-    splitLines.forEach((inputLine) => {
+    splitLines.forEach(inputLine => {
       if (inputLine.includes(keyword.separator)) {
         const { isIgnore, ...configLine } = parseInputLine(inputLine);
         if (isIgnore) {

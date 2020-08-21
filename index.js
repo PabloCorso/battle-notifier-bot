@@ -16,7 +16,7 @@ client.once('ready', () => {
 
 client.login(token);
 
-const handleUserRequest = async (message) => {
+const handleUserRequest = async message => {
   const spacesRegexp = / +/;
   const args = message.content.slice(prefix.length).trim().split(spacesRegexp);
   const commandName = args.shift().toLowerCase();
@@ -33,7 +33,7 @@ const handleUserRequest = async (message) => {
   }
 };
 
-const handleMessage = (message) => {
+const handleMessage = message => {
   const isPrefixedMessage = message.content.startsWith(prefix);
   const isBotMessage = message.author.bot;
   if (!isPrefixedMessage || isBotMessage) return;

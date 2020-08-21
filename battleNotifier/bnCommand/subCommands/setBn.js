@@ -28,7 +28,7 @@ Ignore any *by* Grob
 ${notesMessage}
 `;
 
-const getEditMessage = (userConfig) => {
+const getEditMessage = userConfig => {
   const configString = userConfigFormatter.toString(userConfig);
   return `Please reply to edit your configuration, your current is:\n\n${configString}\n\n${notesMessage}`;
 };
