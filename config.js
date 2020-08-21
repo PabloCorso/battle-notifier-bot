@@ -3,5 +3,5 @@ const path = require('path');
 module.exports = {
   prefix: '!',
   token: '',
-  bnStorePath: path.join(__dirname, 'battle-notifier', 'bn.store.json'),
+  bnStorePath: path.join(__dirname, 'battleNotifier', 'bn.store.json'),
 };

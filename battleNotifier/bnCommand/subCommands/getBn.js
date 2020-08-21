@@ -20,7 +20,7 @@ const getBn = async ({ user, store }) => {
     response = responses.configNotFound;
   }
 
-  user.send(response);
+  await user.send(response);
 };
 
 module.exports = getBn;

@@ -45,7 +45,7 @@ const testBn = async ({ message, store }) => {
   if (userConfig) {
     await runTest({ message, user, userConfig });
   } else {
-    user.send(responses.configNotFound);
+    await user.send(responses.configNotFound);
   }
 };
 

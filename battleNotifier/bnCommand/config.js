@@ -11,6 +11,6 @@ module.exports = {
   },
   responses: {
     configNotFound:
-      'You have no configuration set yet, please write `!bn` to do it',
+      'You have no configuration set yet, please use `!bn` to start receiving battle notifications.',
   },
 };

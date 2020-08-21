@@ -11,8 +11,8 @@ Commands:
 \`\`\`
 `;
 
-const helpBn = (user) => {
-  user.send(helpMessage);
+const helpBn = async (user) => {
+  await user.send(helpMessage);
 };
 
 module.exports = helpBn;

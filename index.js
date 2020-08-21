@@ -1,9 +1,5 @@
 const { prefix, token, bnStorePath } = require('./config');
-const {
-  bnCommand,
-  battleCommand,
-  createBnStore,
-} = require('./battle-notifier');
+const { bnCommand, battleCommand, createBnStore } = require('./battleNotifier');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();

@@ -9,9 +9,9 @@ const {
 const { TimeOutError } = require('./messageUtils');
 const { emojis } = require('./config');
 
-const noCommandFound = (message) => {
-  message.react(emojis.notFound);
-  message.channel.send('Use `!bn help` to see the available commands');
+const noCommandFound = async (message) => {
+  await message.react(emojis.notFound);
+  await message.channel.send('Use `!bn help` to see the available commands');
 };
 
 module.exports = {
