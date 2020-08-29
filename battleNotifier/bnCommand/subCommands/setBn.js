@@ -56,7 +56,7 @@ const setBn = async ({ message, store }) => {
   const userConfig = userConfigParser.parse(userMessage.content);
 
   if (!isUserConfigEmpty(userConfig)) {
-    await store.set(user.id, userConfig);
+    await store.set(user, userConfig);
 
     const configString = userConfigFormatter.toString(userConfig);
     channel.send(`Your configuration was saved as:\n\n${configString}`);

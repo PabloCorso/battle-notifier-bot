@@ -30,9 +30,20 @@ const createBnStore = path => {
     return bnStore[userId];
   };
 
-  const set = async (userId, value) => {
+  const set = async (user, values) => {
+    const { id: userId, username: userName } = user;
     const bnStore = await getAll();
-    const userConfig = { ...bnStore[userId], ...value };
+
+    const createAt = bnStore[userId].createAt || new Date();
+    const updateAt = new Date();
+    const userConfig = {
+      ...bnStore[userId],
+      userName,
+      createAt,
+      updateAt,
+      ...values,
+    };
+
     const data = { ...bnStore, [userId]: userConfig };
     await writeJsonFile(path, data);
   };

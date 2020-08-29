@@ -4,7 +4,7 @@ const toggleBn = async ({ message, store, isOn }) => {
   const user = message.author;
   const userConfig = await store.get(user.id);
   if (userConfig) {
-    await store.set(user.id, { isOn });
+    await store.set(user, { isOn });
     message.react(emojis.ok);
   } else {
     message.react(emojis.error);

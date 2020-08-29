@@ -10,6 +10,10 @@ client.once('ready', () => {
   client.user.setUsername('BattleNotifier');
 });
 
+client.on('disconnect', () => {
+  client.login(token);
+});
+
 client.login(token);
 
 const handleUserRequest = async message => {
